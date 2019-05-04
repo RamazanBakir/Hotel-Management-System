@@ -6,6 +6,5 @@ public class Main {
         LoginPanel lg=new LoginPanel();
         lg.setVisible(true);
         lg.setLocationRelativeTo(null);
-    }
-    
+    }    
 }

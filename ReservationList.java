@@ -175,7 +175,7 @@ public class ReservationList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        Rooms_Plan rp=new Rooms_Plan();
+        ControlPanel rp=new ControlPanel();
         rp.setVisible(true);
         rp.setLocationRelativeTo(null);
         dispose();
