@@ -8,10 +8,24 @@ package hotelmanagement;
 import static hotelmanagement.MyConnection.getConnection2;
 import java.awt.Image;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,45 +39,17 @@ public class Room_List extends javax.swing.JFrame {
     public Room_List() {
         initComponents();
         getConnection2();
+        Show_Rooms_In_JTable();
     }
-//    String ImgPath;
-//    public ImageIcon ResizeImage(String imagePath,byte[] r_pic){
-//        ImageIcon myImage=null;
-//        if(imagePath != null)
-//        {
-//            myImage=new ImageIcon(imagePath);
-//        }
-//        else{
-//            myImage=new ImageIcon(r_pic);
-//        }
-//        Image img=myImage.getImage();
-//       // Image img2=img.getScaledInstance(jLabel7.getwidth(),jLabel7.getHeight(),Image.SCALE_SMOOTH);
-//        //ImageIcon image = new ImageIcon(img2);
-//        
-//        return null;
-//    }
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        add_button = new javax.swing.JButton();
+        delete_button = new javax.swing.JButton();
+        update_button = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -72,11 +58,11 @@ public class Room_List extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        name_text = new javax.swing.JTextField();
+        id_text = new javax.swing.JTextField();
+        price_text = new javax.swing.JTextField();
+        pic_label = new javax.swing.JLabel();
+        property_text = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -84,31 +70,38 @@ public class Room_List extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel_Name = new javax.swing.JLabel();
 
+        jMenu1.setText("jMenu1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(24, 220, 255));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\HotelManagement\\icon\\add_50px.png")); // NOI18N
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        add_button.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\HotelManagement\\icon\\add_50px.png")); // NOI18N
+        add_button.setText("Add");
+        add_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                add_buttonActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\HotelManagement\\icon\\delete_sign_50px.png")); // NOI18N
-        jButton2.setText("Delete");
-        jButton2.setPreferredSize(new java.awt.Dimension(109, 59));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        delete_button.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\HotelManagement\\icon\\delete_sign_50px.png")); // NOI18N
+        delete_button.setText("Delete");
+        delete_button.setPreferredSize(new java.awt.Dimension(109, 59));
+        delete_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                delete_buttonActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\HotelManagement\\icon\\update_50px.png")); // NOI18N
-        jButton3.setText("Update");
-        jButton3.setPreferredSize(new java.awt.Dimension(109, 59));
+        update_button.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\HotelManagement\\icon\\update_50px.png")); // NOI18N
+        update_button.setText("Update");
+        update_button.setPreferredSize(new java.awt.Dimension(109, 59));
+        update_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,11 +109,11 @@ public class Room_List extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(328, 328, 328)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(update_button, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(delete_button, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -128,9 +121,9 @@ public class Room_List extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(add_button, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                    .addComponent(update_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(delete_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
 
@@ -163,16 +156,20 @@ public class Room_List extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 3, 24)); // NOI18N
         jLabel6.setText("Property :");
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(69, 33));
+        name_text.setPreferredSize(new java.awt.Dimension(69, 33));
 
-        jTextField2.setEnabled(false);
-        jTextField2.setPreferredSize(new java.awt.Dimension(69, 33));
-
-        jLabel7.setOpaque(true);
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        id_text.setPreferredSize(new java.awt.Dimension(69, 33));
+        id_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                id_textActionPerformed(evt);
+            }
+        });
+
+        pic_label.setOpaque(true);
+
+        property_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                property_textActionPerformed(evt);
             }
         });
 
@@ -204,11 +201,11 @@ public class Room_List extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
+                    .addComponent(id_text, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                    .addComponent(name_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(price_text)
+                    .addComponent(pic_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(property_text, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
                 .addContainerGap())
@@ -219,27 +216,27 @@ public class Room_List extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                            .addComponent(id_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                            .addComponent(name_text, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                            .addComponent(price_text))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(0, 221, Short.MAX_VALUE))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(pic_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(property_text, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -306,66 +303,243 @@ public class Room_List extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        //if(user.statu==1){
         ControlPanel rp=new ControlPanel();
         rp.setVisible(true);
         rp.pack();
         rp.setLocationRelativeTo(null);
         dispose();
+        //}
     }//GEN-LAST:event_jLabel13MouseClicked
+    public boolean checkInputs()
+    {
+        if(
+          name_text.getText() == null
+       || price_text.getText() ==null
+       || property_text.getText() ==null
+            ){
+            return false;
+            }
+            else {
+            try{
+                Float.parseFloat(price_text.getText());
+                return true;
+            }catch(Exception ex)
+            {
+                return false;
+            }
+        }
+    
+    }
+    String ImagePath=null;
+     public ImageIcon ResizeImage(String ImagePath)
+    {
+        ImageIcon MyImage = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(pic_label.getWidth(), pic_label.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
+    private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
+        if(checkInputs() && pic_label !=null){
+            try{
+                JOptionPane.showMessageDialog(null,"Bölge1");
+                Connection con=getConnection2();
+                PreparedStatement ps =con.prepareStatement("INSERT INTO room(r_name,r_price,r_property,r_picture)"+"values (?,?,?,?)");
+                ps.setString(1,name_text.getText());
+                ps.setString(2,price_text.getText());
+                ps.setString(3,property_text.getText());
+                
+                InputStream img =new FileInputStream(new File(ImagePath));
+                ps.setBlob(4,img);    
+                ps.executeUpdate();
+                
+                Show_Rooms_In_JTable();
+                 
+                JOptionPane.showMessageDialog(null,"Data Inserted!");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());     
+            } catch (FileNotFoundException ex) {
+               JOptionPane.showMessageDialog(null,"Doesn' take to picture!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Some Fields are Empty!");
+            
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_add_buttonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
+          if(!id_text.getText().equals(""))
+        {
+            try {
+                Connection con = getConnection2();
+                PreparedStatement ps = con.prepareStatement("DELETE FROM room WHERE id = ?");
+                int id = Integer.parseInt(id_text.getText());
+                ps.setInt(1, id);
+                ps.executeUpdate();
+               // Show_Products_In_jTable1();
+                JOptionPane.showMessageDialog(null, "Product Deleted");
+            } catch (SQLException ex) {
+                Logger.getLogger(Room_List.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Product Not Deleted");
+            }
+         
+        }else{
+            JOptionPane.showMessageDialog(null, "Product Not Deleted : No Id To Delete");
+        }
+       
+    }//GEN-LAST:event_delete_buttonActionPerformed
+
+    //table
+ public ArrayList<Room> getRoom_List()
+    {
+            ArrayList<Room> Room_List  = new ArrayList<Room>();
+            Connection con = getConnection2();
+            String query = "SELECT * FROM rooms";
+            
+            Statement st;
+            ResultSet rs;
+            JOptionPane.showMessageDialog(null,"Bölge 1");
+        try {
+            JOptionPane.showMessageDialog(null,"Bölge 2");
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            Room room;
+            JOptionPane.showMessageDialog(null,"Bölge 3");
+            while(rs.next())
+            {
+                room = new Room(rs.getInt("id"),rs.getString("r_name"),Float.parseFloat(rs.getString("r_price")),rs.getString("r_property"),rs.getBytes("r_picture"));
+                Room_List.add(room);
+            }
+          JOptionPane.showMessageDialog(null,"Bölge 4");  
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null,"Error!");
+        }
+        
+        return Room_List; 
+                
+    }    
+    
+    //      2 - Populate The JTable
+    
+ public void Show_Rooms_In_JTable()
+    {
+        ArrayList<Room> Room_List = getRoom_List();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        // clear jtable content
+        model.setRowCount(0);
+        Object[] row = new Object[4];
+        for(int i = 0; i < Room_List.size(); i++)
+        {
+            row[0] = Room_List.get(i).getId();
+            row[1] = Room_List.get(i).getName();
+            row[2] = Room_List.get(i).getPrice();
+            row[3] = Room_List.get(i).getProperty();
+            
+            model.addRow(row);
+        }
+    
+    }
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    private void property_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_property_textActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
+    }//GEN-LAST:event_property_textActionPerformed
+          
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-//        JFileChooser file =new JFileChooser();
-//        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-//        
-//        FileNameExtensionFilter filter=new FileNameExtensionFilter("*.images",".jpg");
-////        FileNameExtensionFilter filter2=new FileNameExtensionFilter("*.jpg");
-////        FileNameExtensionFilter filter3=new FileNameExtensionFilter("*.png");
-////        
-////        file.addChoosableFileFilter(filter);
-////        file.addChoosableFileFilter(filter2);
-//        file.addChoosableFileFilter(filter);
-//        
-//        int result=file.showSaveDialog(null);
-//        if(result==JFileChooser.APPROVE_OPTION)
-//        {
-//            File selectedFile=file.getSelectedFile();
-//            String path=selectedFile.getAbsolutePath();
-//            jLabel7.setIcon(null);
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(null,"No File Selected ! ");
-//        
-    
-    JFileChooser file = new JFileChooser();
-    file.setCurrentDirectory(new File(System.getProperty("user.home")));
-    
+          JFileChooser file = new JFileChooser();
+          file.setCurrentDirectory(new File(System.getProperty("user.home")));
 
+          FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg","gif","png");
+          
+          file.addChoosableFileFilter(filter);
+          int result = file.showSaveDialog(null);
+           
+          
+          if(result == JFileChooser.APPROVE_OPTION){
+              File selectedFile = file.getSelectedFile();
+              String path = selectedFile.getAbsolutePath();
+              pic_label.setIcon(ResizeImage(path));
+              ImagePath=path;
+          }
 
-
-    
-
-
-
-
-
-
-
-
-
+          else if(result == JFileChooser.CANCEL_OPTION){
+              System.out.println("No File Select!");
+          }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void id_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_id_textActionPerformed
+
+    private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
+       if(checkInputs() && id_text.getText() !=null)
+       {
+           String UpdateQuery=null;
+           PreparedStatement ps=null;
+           Connection con=getConnection2();
+           
+           //update without image
+           if(pic_label == null)
+           {
+               try{
+                   UpdateQuery="UPDATE room SET r_name = ?,r_price = ?"+",r_propety = ? WHERE id = ? ";
+                   
+                   ps=con.prepareStatement(UpdateQuery);
+                   
+                   ps.setString(1,name_text.getText());
+                   ps.setString(2,price_text.getText());
+                   ps.setString(3,property_text.getText());
+                   
+                   ps.setInt(4,Integer.parseInt(id_text.getText()));
+                   
+               }catch(SQLException ex) {
+                   JOptionPane.showMessageDialog(null,"Update is doesn't be!");
+               }
+           }
+           //update with image 
+           else {
+               try { 
+               InputStream img =null;
+               
+                   img = new FileInputStream(new File(ImagePath));
+                   UpdateQuery ="UPDATE room SET r_name = ?,r_price = ?"+",r_propety = ?,r_image=? WHERE id = ? ";
+               
+                   ps=con.prepareStatement(UpdateQuery);
+                   
+                   ps.setString(1,name_text.getText());
+                   ps.setString(2,price_text.getText());
+                   ps.setString(3,property_text.getText());
+                   
+                   ps.setBlob(4, (Blob) pic_label);
+                   
+                   ps.setInt(5,Integer.parseInt(id_text.getText()));
+                   
+                   
+                   
+                   
+               
+               } catch (Exception ex) {
+                   JOptionPane.showMessageDialog(null,"Update doesn't be with an Image !");
+               }
+               }
+           }else{
+            JOptionPane.showMessageDialog(null,"One or More Fields are Empty!");
+            }
+       
+    }//GEN-LAST:event_update_buttonActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -402,9 +576,9 @@ public class Room_List extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton add_button;
+    private javax.swing.JButton delete_button;
+    private javax.swing.JTextField id_text;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -414,16 +588,17 @@ public class Room_List extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel_Name;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JTable jTable1;
+    private javax.swing.JTextField name_text;
+    public javax.swing.JLabel pic_label;
+    private javax.swing.JTextField price_text;
+    private javax.swing.JTextField property_text;
+    private javax.swing.JButton update_button;
     // End of variables declaration//GEN-END:variables
 }

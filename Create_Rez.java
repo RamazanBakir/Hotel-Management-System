@@ -5,11 +5,15 @@
  */
 package hotelmanagement;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Ramazan
  */
 public class Create_Rez extends javax.swing.JFrame {
+
+    String status3;
 
     /**
      * Creates new form Create_Rez
@@ -34,6 +38,7 @@ public class Create_Rez extends javax.swing.JFrame {
         jLabel_Name = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        status_label = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         room_type = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -113,6 +118,8 @@ public class Create_Rez extends javax.swing.JFrame {
             }
         });
 
+        status_label.setText("jLabel7");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,11 +128,17 @@ public class Create_Rez extends javax.swing.JFrame {
                 .addContainerGap(1050, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(502, 502, 502)
+                .addComponent(status_label)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(status_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -201,11 +214,31 @@ public class Create_Rez extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        ControlPanel rp=new ControlPanel();
-        rp.setVisible(true);
-        rp.pack();
-        rp.setLocationRelativeTo(null);
-        dispose();
+        
+//       String status=String.valueOf(status_label.getText());
+//        int status2 = Integer.parseInt(status);
+//        
+//        if(status2 == 0){
+//                CustomerForm cf=new CustomerForm();
+//                cf.setVisible(true);
+//                cf.setLocationRelativeTo(null);
+//                dispose();
+//            }
+//            else if (status2 == 1)
+//            {
+//                ControlPanel rp=new ControlPanel();
+//                rp.setVisible(true);
+//                rp.setLocationRelativeTo(null);
+//                rp.setExtendedState(JFrame.MAXIMIZED_HORIZ);                
+//                dispose();
+//            }
+                  ControlPanel rp=new ControlPanel();
+                  rp.setVisible(true);
+                  rp.setLocationRelativeTo(null);
+                  rp.setExtendedState(JFrame.MAXIMIZED_HORIZ);                
+                  dispose();
+
+
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -264,5 +297,6 @@ public class Create_Rez extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JComboBox<String> room_type;
+    public javax.swing.JLabel status_label;
     // End of variables declaration//GEN-END:variables
 }

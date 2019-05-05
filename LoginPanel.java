@@ -24,6 +24,7 @@ public class LoginPanel extends javax.swing.JFrame {
         jLabel_Log = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        statu_text = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -39,11 +40,9 @@ public class LoginPanel extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        statu_text = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(24, 220, 255));
 
@@ -71,6 +70,23 @@ public class LoginPanel extends javax.swing.JFrame {
             }
         });
 
+        statu_text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        statu_text.setEnabled(false);
+        statu_text.setOpaque(false);
+        statu_text.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                statu_textFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                statu_textFocusLost(evt);
+            }
+        });
+        statu_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statu_textActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -83,11 +99,16 @@ public class LoginPanel extends javax.swing.JFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel_Log, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(statu_text, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(statu_text, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_Log)
@@ -97,6 +118,8 @@ public class LoginPanel extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 628, 869, -1));
 
         jPanel2.setBackground(new java.awt.Color(24, 220, 255));
 
@@ -140,6 +163,8 @@ public class LoginPanel extends javax.swing.JFrame {
                         .addComponent(jLabel2)))
                 .addGap(31, 31, 31))
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(23, 192, 235));
 
@@ -208,27 +233,6 @@ public class LoginPanel extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 36)); // NOI18N
-        jLabel19.setText("Status :");
-
-        statu_text.setText("Please Enter Your Statu");
-        statu_text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        statu_text.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                statu_textFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                statu_textFocusLost(evt);
-            }
-        });
-        statu_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statu_textActionPerformed(evt);
-            }
-        });
-
-        jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ramazan\\Documents\\NetBeansProjects\\HotelManagement\\icon\\statü.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -238,26 +242,20 @@ public class LoginPanel extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(statu_text, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SurnameArea, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(68, 68, 68)
-                            .addComponent(NameArea, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(68, 68, 68)
+                        .addComponent(NameArea, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SurnameArea, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
@@ -268,52 +266,26 @@ public class LoginPanel extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(NameArea, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NameArea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(86, 86, 86)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel5)
                         .addComponent(SurnameArea, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19)
-                    .addComponent(statu_text, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
-                .addGap(35, 35, 35)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(48, 48, 48)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(477, 477, 477)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 141, 869, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -339,19 +311,34 @@ public class LoginPanel extends javax.swing.JFrame {
         String type=String.valueOf(statu_text.getText());
         
         
-        String query="SELECT * FROM `app_users` WHERE `u_name` =? AND `u_surname` =? AND `u_password`=? AND `statu`=?" ;
-        
+        String query="SELECT * FROM `app_users` WHERE `u_name` =? AND `u_surname` =? AND `u_password`=?  " ;
+        //String query="SELECT `u_name`,`u_surname`,`u_password` FROM `app_users` WHERE `statu`=1 " ;
+        //JOptionPane.showMessageDialog(null,"Hata ---1");
         try {
             ps=MyConnection.getConnection().prepareStatement(query);
             
             ps.setString(1,uname);
             ps.setString(2,lname);
             ps.setString(3,pass);
-            ps.setString(4,type);
             
+            
+            //JOptionPane.showMessageDialog(null,query);
             rs=ps.executeQuery();
-            
-            if(rs.next())
+            //JOptionPane.showMessageDialog(null,"Hata 1");
+            String query2="SELECT `statu` FROM `app_users` WHERE `u_password LIKE '% " + SurnameArea.getText() + NameArea.getText() + jPasswordField1.getText() +"%' ";
+            if(rs.next()){
+                int deger = rs.getInt("statu");
+                
+                //JOptionPane.showMessageDialog(null,deger);
+            if(deger == 0){
+                CustomerForm cf=new CustomerForm();
+                cf.setVisible(true);
+                cf.setLocationRelativeTo(null);
+                cf.jLabel_Name.setText("Welcome "+uname+"");
+                cf.statu_label.setText("Statu"+deger+"");
+                dispose();
+            }
+            else if (deger == 1)
             {
                 ControlPanel rp=new ControlPanel();
                 rp.setVisible(true);
@@ -359,10 +346,45 @@ public class LoginPanel extends javax.swing.JFrame {
                 rp.setLocationRelativeTo(null);
                 rp.setExtendedState(JFrame.MAXIMIZED_HORIZ);
                 rp.jLabel_Name.setText("Welcome "+uname+"");
+                rp.statu_label.setText("Statu"+deger+"");
                 
                 dispose();
             }
-           
+
+            }
+//            JOptionPane.showMessageDialog(null,query2);
+//            if(Integer.parseInt(query2) == 0){
+//                CustomerForm cf=new CustomerForm();
+//                cf.setVisible(true);
+//                cf.setLocationRelativeTo(null);
+//                dispose();
+//            }
+//            else if (Integer.parseInt(query2) == 1)
+//            {
+//                ControlPanel rp=new ControlPanel();
+//                rp.setVisible(true);
+//                rp.pack();
+//                rp.setLocationRelativeTo(null);
+//                rp.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+//                rp.jLabel_Name.setText("Welcome "+uname+"");
+//                
+//                dispose();
+//            }
+            
+            
+            
+//            if(rs.next())
+//            {
+//                ControlPanel rp=new ControlPanel();
+//                rp.setVisible(true);
+//                rp.pack();
+//                rp.setLocationRelativeTo(null);
+//                rp.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+//                rp.jLabel_Name.setText("Welcome "+uname+"");
+//                
+//                dispose();
+//            }
+
             else
             {
                 JOptionPane.showMessageDialog(null,"Incorrect Name,Surname or Password","Error",JOptionPane.ERROR_MESSAGE);
@@ -371,6 +393,7 @@ public class LoginPanel extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         
     }//GEN-LAST:event_jLabel_LogMouseClicked
 
@@ -419,28 +442,28 @@ public class LoginPanel extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPasswordField1FocusGained
 
-    private void statu_textFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_statu_textFocusGained
-        if(statu_text.getText().trim().equals("Please Enter Your Statu")){
-            statu_text.setText("");
-        } 
-    }//GEN-LAST:event_statu_textFocusGained
-
-    private void statu_textFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_statu_textFocusLost
-          if(statu_text.getText().trim().equals("")){
-            statu_text.setText("Please Enter Your Statu");
-        }
-    }//GEN-LAST:event_statu_textFocusLost
-
-    private void statu_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statu_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statu_textActionPerformed
-
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         CustomerForm cf=new CustomerForm();
         cf.setVisible(true);
         cf.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void statu_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statu_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statu_textActionPerformed
+
+    private void statu_textFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_statu_textFocusLost
+        if(statu_text.getText().trim().equals("")){
+            statu_text.setText("Please Enter Your Statu");
+        }
+    }//GEN-LAST:event_statu_textFocusLost
+
+    private void statu_textFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_statu_textFocusGained
+        if(statu_text.getText().trim().equals("Please Enter Your Statu")){
+            statu_text.setText("");
+        }
+    }//GEN-LAST:event_statu_textFocusGained
 
     
 
@@ -462,9 +485,7 @@ public class LoginPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -476,6 +497,6 @@ public class LoginPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
-    public javax.swing.JTextField statu_text;
+    private javax.swing.JTextField statu_text;
     // End of variables declaration//GEN-END:variables
 }

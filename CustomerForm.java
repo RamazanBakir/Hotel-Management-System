@@ -18,6 +18,7 @@ public class CustomerForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel_Name = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        statu_label = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
@@ -87,15 +88,23 @@ public class CustomerForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(24, 220, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1310, 130));
 
+        statu_label.setText("jLabel4");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1310, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(610, 610, 610)
+                .addComponent(statu_label)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(statu_label)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(23, 192, 235));
@@ -239,6 +248,7 @@ public class CustomerForm extends javax.swing.JFrame {
         Create_Rez cr=new Create_Rez();
         cr.setVisible(true);
         cr.setLocationRelativeTo(null);
+        cr.status_label.setText("Statu"+statu_label+"");
         dispose();
     }//GEN-LAST:event_jButton8MouseClicked
 
@@ -291,5 +301,6 @@ public class CustomerForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    public javax.swing.JLabel statu_label;
     // End of variables declaration//GEN-END:variables
 }

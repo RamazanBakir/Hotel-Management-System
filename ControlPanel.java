@@ -30,6 +30,7 @@ public class ControlPanel extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        statu_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -220,15 +221,25 @@ public class ControlPanel extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(24, 220, 255));
 
+        statu_label.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        statu_label.setForeground(new java.awt.Color(255, 255, 255));
+        statu_label.setText("jLabel5");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(593, 593, 593)
+                .addComponent(statu_label)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(statu_label)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -322,6 +333,14 @@ public class ControlPanel extends javax.swing.JFrame {
         Create_Rez cr=new Create_Rez();
         cr.setVisible(true);
         cr.setLocationRelativeTo(null);
+        
+//        String status=String.valueOf(status_label.getText());
+//        int status2 = Integer.parseInt(status);
+        
+        String status3=String.valueOf(cr.status_label.getText());
+        int status1 = Integer.parseInt(cr.status3);
+        //status_label=Integer.toString(status1);
+        cr.status_label.setText("Statu"+ statu_label +"");
         dispose();
     }//GEN-LAST:event_jButton6MouseClicked
 
@@ -354,5 +373,6 @@ public class ControlPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    public javax.swing.JLabel statu_label;
     // End of variables declaration//GEN-END:variables
 }
